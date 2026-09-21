@@ -7,6 +7,12 @@ if( isset( $_POST[ 'Upload' ] ) ) {
         $filename = basename( $_FILES[ 'uploaded' ][ 'name' ] );
         $tmp_name = $_FILES[ 'uploaded' ][ 'tmp_name' ];
 
+        // First check whether upload itself succeeded
+        if ( $_FILES['uploaded']['error'] !== UPLOAD_ERR_OK || empty($tmp_name) ) {
+                $html .= '<pre>Upload failed.</pre>';
+                return;
+        }
+
         $allowed_extensions = array( 'jpg', 'jpeg', 'png', 'gif' );
         $extension = strtolower( pathinfo( $filename, PATHINFO_EXTENSION ) );
 
@@ -20,9 +26,10 @@ if( isset( $_POST[ 'Upload' ] ) ) {
         );
 
         if( !in_array( $extension, $allowed_extensions, true ) ||
-            !in_array( $mime_type, $allowed_mime_types, true ) ) {
+            !in_array( $mime_type, $allowed_mime_types, true ) ||
+            getimagesize( $tmp_name ) === false ) {
 
-                $html .= '<pre>Invalid file type. Only image files are allowed.</pre>';
+                $html .= '<pre>Invalid file type. Only valid image files are allowed.</pre>';
         }
         else {
                 $target_path .= $filename;
