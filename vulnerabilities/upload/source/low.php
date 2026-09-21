@@ -1,19 +1,39 @@
 <?php
 
 if( isset( $_POST[ 'Upload' ] ) ) {
-	// Where are we going to be writing to?
-	$target_path  = DVWA_WEB_PAGE_TO_ROOT . "hackable/uploads/";
-	$target_path .= basename( $_FILES[ 'uploaded' ][ 'name' ] );
 
-	// Can we move the file to the upload folder?
-	if( !move_uploaded_file( $_FILES[ 'uploaded' ][ 'tmp_name' ], $target_path ) ) {
-		// No
-		$html .= '<pre>Your image was not uploaded.</pre>';
-	}
-	else {
-		// Yes!
-		$html .= "<pre>{$target_path} succesfully uploaded!</pre>";
-	}
+        $target_path = DVWA_WEB_PAGE_TO_ROOT . "hackable/uploads/";
+
+        $filename = basename( $_FILES[ 'uploaded' ][ 'name' ] );
+        $tmp_name = $_FILES[ 'uploaded' ][ 'tmp_name' ];
+
+        $allowed_extensions = array( 'jpg', 'jpeg', 'png', 'gif' );
+        $extension = strtolower( pathinfo( $filename, PATHINFO_EXTENSION ) );
+
+        $finfo = finfo_open( FILEINFO_MIME_TYPE );
+        $mime_type = finfo_file( $finfo, $tmp_name );
+
+        $allowed_mime_types = array(
+                'image/jpeg',
+                'image/png',
+                'image/gif'
+        );
+
+        if( !in_array( $extension, $allowed_extensions, true ) ||
+            !in_array( $mime_type, $allowed_mime_types, true ) ) {
+
+                $html .= '<pre>Invalid file type. Only image files are allowed.</pre>';
+        }
+        else {
+                $target_path .= $filename;
+
+                if( !move_uploaded_file( $tmp_name, $target_path ) ) {
+                        $html .= '<pre>Your image was not uploaded.</pre>';
+                }
+                else {
+                        $html .= "<pre>{$target_path} successfully uploaded!</pre>";
+                }
+        }
 }
 
 ?>
