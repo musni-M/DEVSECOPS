@@ -1,0 +1,16 @@
+name: Security Pipeline
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  sast:
+    name: SAST (Semgrep)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Semgrep
+        run: pip install semgrep
+      - name: Run Semgrep (fail on findings)
+        run: semgrep --config=auto --error vulnerabilities/
