@@ -1,0 +1,219 @@
+               
+               
+┌─────────────┐
+│ Scan Status │
+└─────────────┘
+  Scanning 6 files tracked by git with 1074 Code rules:
+                                                                                                                        
+  Language      Rules   Files          Origin      Rules                                                                
+ ─────────────────────────────        ───────────────────                                                               
+  <multilang>      47       6          Community    1074                                                                
+  php              38       6                                                                                           
+                                                                                                                        
+                    
+                    
+┌──────────────────┐
+│ 24 Code Findings │
+└──────────────────┘
+                                        
+    vulnerabilities/exec/source/high.php
+   ❯❯❱ php.lang.security.exec-use.exec-use
+          ❰❰ Blocking ❱❱
+          Executing non-constant commands. This can lead to command injection.
+          Details: https://sg.run/5Q1j                                        
+                                                                              
+           26┆ $cmd = shell_exec( 'ping  ' . $target );
+   
+    ❯❱ php.lang.security.injection.tainted-exec.tainted-exec
+          ❰❰ Blocking ❱❱
+          User input is passed to a function that executes a shell command. This can lead to remote code
+          execution.                                                                                    
+          Details: https://sg.run/kxEEz                                                                 
+                                                                                                        
+           26┆ $cmd = shell_exec( 'ping  ' . $target );
+   
+   ❯❯❱ php.lang.security.tainted-exec.tainted-exec
+          ❰❰ Blocking ❱❱
+          Executing non-constant commands. This can lead to command injection. You should use
+          `escapeshellarg()` when using command.                                             
+          Details: https://sg.run/JAkP                                                       
+                                                                                             
+           26┆ $cmd = shell_exec( 'ping  ' . $target );
+   
+   ❯❯❱ php.lang.security.exec-use.exec-use
+          ❰❰ Blocking ❱❱
+          Executing non-constant commands. This can lead to command injection.
+          Details: https://sg.run/5Q1j                                        
+                                                                              
+           30┆ $cmd = shell_exec( 'ping  -c 4 ' . $target );
+   
+    ❯❱ php.lang.security.injection.tainted-exec.tainted-exec
+          ❰❰ Blocking ❱❱
+          User input is passed to a function that executes a shell command. This can lead to remote code
+          execution.                                                                                    
+          Details: https://sg.run/kxEEz                                                                 
+                                                                                                        
+           30┆ $cmd = shell_exec( 'ping  -c 4 ' . $target );
+   
+   ❯❯❱ php.lang.security.tainted-exec.tainted-exec
+          ❰❰ Blocking ❱❱
+          Executing non-constant commands. This can lead to command injection. You should use
+          `escapeshellarg()` when using command.                                             
+          Details: https://sg.run/JAkP                                                       
+                                                                                             
+           30┆ $cmd = shell_exec( 'ping  -c 4 ' . $target );
+                                              
+    vulnerabilities/exec/source/impossible.php
+   ❯❯❱ php.lang.security.exec-use.exec-use
+          ❰❰ Blocking ❱❱
+          Executing non-constant commands. This can lead to command injection.
+          Details: https://sg.run/5Q1j                                        
+                                                                              
+           22┆ $cmd = shell_exec( 'ping  ' . $target );
+   
+    ❯❱ php.lang.security.injection.tainted-exec.tainted-exec
+          ❰❰ Blocking ❱❱
+          User input is passed to a function that executes a shell command. This can lead to remote code
+          execution.                                                                                    
+          Details: https://sg.run/kxEEz                                                                 
+                                                                                                        
+           22┆ $cmd = shell_exec( 'ping  ' . $target );
+   
+   ❯❯❱ php.lang.security.tainted-exec.tainted-exec
+          ❰❰ Blocking ❱❱
+          Executing non-constant commands. This can lead to command injection. You should use
+          `escapeshellarg()` when using command.                                             
+          Details: https://sg.run/JAkP                                                       
+                                                                                             
+           22┆ $cmd = shell_exec( 'ping  ' . $target );
+   
+   ❯❯❱ php.lang.security.exec-use.exec-use
+          ❰❰ Blocking ❱❱
+          Executing non-constant commands. This can lead to command injection.
+          Details: https://sg.run/5Q1j                                        
+                                                                              
+           26┆ $cmd = shell_exec( 'ping  -c 4 ' . $target );
+   
+    ❯❱ php.lang.security.injection.tainted-exec.tainted-exec
+          ❰❰ Blocking ❱❱
+          User input is passed to a function that executes a shell command. This can lead to remote code
+          execution.                                                                                    
+          Details: https://sg.run/kxEEz                                                                 
+                                                                                                        
+           26┆ $cmd = shell_exec( 'ping  -c 4 ' . $target );
+   
+   ❯❯❱ php.lang.security.tainted-exec.tainted-exec
+          ❰❰ Blocking ❱❱
+          Executing non-constant commands. This can lead to command injection. You should use
+          `escapeshellarg()` when using command.                                             
+          Details: https://sg.run/JAkP                                                       
+                                                                                             
+           26┆ $cmd = shell_exec( 'ping  -c 4 ' . $target );
+                                       
+    vulnerabilities/exec/source/low.php
+   ❯❯❱ php.lang.security.exec-use.exec-use
+          ❰❰ Blocking ❱❱
+          Executing non-constant commands. This can lead to command injection.
+          Details: https://sg.run/5Q1j                                        
+                                                                              
+            6┆ $cmd = shell_exec( 'ping  ' . $target );
+   
+    ❯❱ php.lang.security.injection.tainted-exec.tainted-exec
+          ❰❰ Blocking ❱❱
+          User input is passed to a function that executes a shell command. This can lead to remote code
+          execution.                                                                                    
+          Details: https://sg.run/kxEEz                                                                 
+                                                                                                        
+            6┆ $cmd = shell_exec( 'ping  ' . $target );
+   
+   ❯❯❱ php.lang.security.tainted-exec.tainted-exec
+          ❰❰ Blocking ❱❱
+          Executing non-constant commands. This can lead to command injection. You should use
+          `escapeshellarg()` when using command.                                             
+          Details: https://sg.run/JAkP                                                       
+                                                                                             
+            6┆ $cmd = shell_exec( 'ping  ' . $target );
+   
+   ❯❯❱ php.lang.security.exec-use.exec-use
+          ❰❰ Blocking ❱❱
+          Executing non-constant commands. This can lead to command injection.
+          Details: https://sg.run/5Q1j                                        
+                                                                              
+            9┆ $cmd = shell_exec( 'ping  -c 4 ' . $target );
+   
+    ❯❱ php.lang.security.injection.tainted-exec.tainted-exec
+          ❰❰ Blocking ❱❱
+          User input is passed to a function that executes a shell command. This can lead to remote code
+          execution.                                                                                    
+          Details: https://sg.run/kxEEz                                                                 
+                                                                                                        
+            9┆ $cmd = shell_exec( 'ping  -c 4 ' . $target );
+   
+   ❯❯❱ php.lang.security.tainted-exec.tainted-exec
+          ❰❰ Blocking ❱❱
+          Executing non-constant commands. This can lead to command injection. You should use
+          `escapeshellarg()` when using command.                                             
+          Details: https://sg.run/JAkP                                                       
+                                                                                             
+            9┆ $cmd = shell_exec( 'ping  -c 4 ' . $target );
+                                          
+    vulnerabilities/exec/source/medium.php
+   ❯❯❱ php.lang.security.exec-use.exec-use
+          ❰❰ Blocking ❱❱
+          Executing non-constant commands. This can lead to command injection.
+          Details: https://sg.run/5Q1j                                        
+                                                                              
+           19┆ $cmd = shell_exec( 'ping  ' . $target );
+   
+    ❯❱ php.lang.security.injection.tainted-exec.tainted-exec
+          ❰❰ Blocking ❱❱
+          User input is passed to a function that executes a shell command. This can lead to remote code
+          execution.                                                                                    
+          Details: https://sg.run/kxEEz                                                                 
+                                                                                                        
+           19┆ $cmd = shell_exec( 'ping  ' . $target );
+   
+   ❯❯❱ php.lang.security.tainted-exec.tainted-exec
+          ❰❰ Blocking ❱❱
+          Executing non-constant commands. This can lead to command injection. You should use
+          `escapeshellarg()` when using command.                                             
+          Details: https://sg.run/JAkP                                                       
+                                                                                             
+           19┆ $cmd = shell_exec( 'ping  ' . $target );
+   
+   ❯❯❱ php.lang.security.exec-use.exec-use
+          ❰❰ Blocking ❱❱
+          Executing non-constant commands. This can lead to command injection.
+          Details: https://sg.run/5Q1j                                        
+                                                                              
+           23┆ $cmd = shell_exec( 'ping  -c 4 ' . $target );
+   
+    ❯❱ php.lang.security.injection.tainted-exec.tainted-exec
+          ❰❰ Blocking ❱❱
+          User input is passed to a function that executes a shell command. This can lead to remote code
+          execution.                                                                                    
+          Details: https://sg.run/kxEEz                                                                 
+                                                                                                        
+           23┆ $cmd = shell_exec( 'ping  -c 4 ' . $target );
+   
+   ❯❯❱ php.lang.security.tainted-exec.tainted-exec
+          ❰❰ Blocking ❱❱
+          Executing non-constant commands. This can lead to command injection. You should use
+          `escapeshellarg()` when using command.                                             
+          Details: https://sg.run/JAkP                                                       
+                                                                                             
+           23┆ $cmd = shell_exec( 'ping  -c 4 ' . $target );
+                
+                
+┌──────────────┐
+│ Scan Summary │
+└──────────────┘
+✅ Scan completed successfully.
+ • Findings: 24 (24 blocking)
+ • Rules run: 85
+ • Targets scanned: 6
+ • Parsed lines: ~100.0%
+ • Scan was limited to files tracked by git
+ • For a detailed list of skipped files and lines, run semgrep with the --verbose flag
+Ran 85 rules on 6 files: 24 findings.
+
