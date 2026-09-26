@@ -1,0 +1,9 @@
+rules:
+  - id: dvwa-unrestricted-file-upload
+    message: Uploaded file is moved directly without file type validation
+    severity: ERROR
+    languages:
+      - php
+    patterns:
+      - pattern: |
+          move_uploaded_file($_FILES[...]['tmp_name'], $DEST)
