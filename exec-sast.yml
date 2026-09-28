@@ -1,0 +1,19 @@
+rules:
+  - id: dvwa-command-injection
+    message: User-controlled input flows into a system command and may allow command injection
+    severity: ERROR
+    languages:
+      - php
+    mode: taint
+    pattern-sources:
+      - pattern: $_REQUEST[...]
+      - pattern: $_GET[...]
+      - pattern: $_POST[...]
+    pattern-sinks:
+      - pattern: shell_exec(...)
+      - pattern: exec(...)
+      - pattern: system(...)
+      - pattern: passthru(...)
+    pattern-sanitizers:
+      - pattern: escapeshellarg(...)
+      - pattern: escapeshellcmd(...)
