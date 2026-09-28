@@ -1,0 +1,30 @@
+rules:
+  - id: dvwa-sqli
+    message: User-controlled input flows into a SQL query and may allow SQL injection
+    severity: ERROR
+    languages:
+      - php
+    mode: taint
+
+    pattern-sources:
+      - pattern: $_REQUEST[...]
+      - pattern: $_GET[...]
+      - pattern: $_POST[...]
+
+    pattern-sinks:
+      - patterns:
+          - pattern-either:
+              - pattern: mysqli_query($CONN, $SQL)
+              - pattern: mysqli_multi_query($CONN, $SQL)
+          - focus-metavariable: $SQL
+      - pattern: mysql_query(...)
+      - pattern: $DB->query(...)
+      - pattern: $DB->multi_query(...)
+      - pattern: $DB->exec(...)
+      - pattern: $DB->prepare(...)
+
+    pattern-sanitizers:
+      - pattern: mysqli_real_escape_string(...)
+      - pattern: $DB->real_escape_string(...)
+      - pattern: intval(...)
+      - pattern: (int) $X
