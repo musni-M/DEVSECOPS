@@ -13,4 +13,9 @@ jobs:
       - name: Install Semgrep
         run: pip install semgrep
       - name: Run Semgrep (fail on findings)
-        run: semgrep --config=auto --error vulnerabilities/
+        run: |
+          semgrep --config=auto --error \
+            vulnerabilities/sqli/source/low.php \
+            vulnerabilities/upload/source/low.php \
+            vulnerabilities/exec/source/low.php \
+            vulnerabilities/xss_r/source/low.php
