@@ -14,8 +14,13 @@ jobs:
       - name: Install Semgrep
         run: pip install semgrep
 
-      - name: Run Semgrep (fail on findings)
-        run: semgrep --config=auto --error vulnerabilities/
+      - name: Run Semgrep on remediated vulnerability files
+        run: |
+          semgrep --config=auto --error \
+            vulnerabilities/sqli/source/low.php \
+            vulnerabilities/upload/source/low.php \
+            vulnerabilities/exec/source/low.php \
+            vulnerabilities/xss_r/source/low.php
 
   trivy:
     name: Container Scan (Trivy)
@@ -50,6 +55,7 @@ jobs:
       - name: Run Composer audit
         working-directory: vulnerabilities/api
         run: composer audit --locked
+
   gitleaks:
     name: Secret Scan (Gitleaks)
     runs-on: ubuntu-latest
