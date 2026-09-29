@@ -7,4 +7,4 @@ rules:
     patterns:
       - pattern: |
           move_uploaded_file($_FILES[...]['tmp_name'], $DEST)
-# Verified after CI security pipeline hardening
+# Re-verified after successful CI security pipeline run
