@@ -1,0 +1,5 @@
+[allowlist]
+description = "Ignore DVWA sample token in CSRF help documentation"
+paths = [
+  '''vulnerabilities/csrf/help/help\.php'''
+]
